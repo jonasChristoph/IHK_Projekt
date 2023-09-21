@@ -100,7 +100,7 @@ class Database:
             self.connection_pool.release_connection(conn)
         return data
 
-    def update(self, id, data,database):
+    def update(self, name, ):
         conn = self.connection_pool.get_connection()
         try:
             data = conn.execute(f'INSERT INTO ResultDatasets (name, group_id) VALUES ('', 1)')
