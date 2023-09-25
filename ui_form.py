@@ -160,7 +160,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CNN Demonstrator", None))
         self.actionImport.setText(QCoreApplication.translate("MainWindow", u"Import", None))
         self.actionExport.setText(QCoreApplication.translate("MainWindow", u"Export", None))
         self.actionSID.setText(QCoreApplication.translate("MainWindow", u"SID", None))

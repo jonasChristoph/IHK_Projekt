@@ -1,11 +1,9 @@
 # This Python file uses the following encoding: utf-8
 import sys
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget
+from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtGui import QPixmap
 from PySide6 import QtCore
-# Important:
-# You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
 from ui_form import Ui_MainWindow
@@ -33,6 +31,9 @@ class MainWindow(QMainWindow):
         self.ui.label_left_image.setPixmap(scale(pic, 640))
         self.ui.label_right_image.setPixmap(scale(pic, 640))
         self.ui.label_logo.setPixmap(scale(logo, 145))
+
+    def button_clicked(self):
+        print("clicked")
 
 
 if __name__ == "__main__":

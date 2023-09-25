@@ -100,18 +100,31 @@ class Database:
             self.connection_pool.release_connection(conn)
         return data
 
-    def update(self, name, ):
+    def update_results(self, name, group_id):
         conn = self.connection_pool.get_connection()
         try:
-            data = conn.execute(f'INSERT INTO ResultDatasets (name, group_id) VALUES ('', 1)')
+            conn.execute(f'INSERT INTO ResultDatasets (name, group_id) VALUES ({name}, {group_id})')
             conn.commit()
         finally:
             self.connection_pool.release_connection(conn)
-        return data
 
-    def delete(self, id, database):
-        pass
-    
+    def update_images(self, name, group_id):
+        conn = self.connection_pool.get_connection()
+        try:
+            conn.execute(f'INSERT INTO Images (name, group_id) VALUES ({name}, {group_id})')
+            conn.commit()
+        finally:
+            self.connection_pool.release_connection(conn)
+
+    def delete(self, id):
+        conn = self.connection_pool.get_connection()
+        try:
+            conn.execute(f'DELETE FROM Images WHERE id = {id}')
+            conn.commit()
+        finally:
+            self.connection_pool.release_connection(conn)
+
+
 if __name__ == '__main__':
     # Initialize the ConnectionPool
     connection_pool = ConnectionPool(max_connections=10, database='C:/Users/Jonas/Downloads/SQLiteSpy_v1.9.17/win64/Image_database.db3')
@@ -123,6 +136,15 @@ if __name__ == '__main__':
     data = database.read_single_image("2")
 
     for row in data:
+        print("ID = ", row[0])
+        print("NAME = ", row[1])
+        print("DATASET_ID = ", row[2])
+        print("TIMESTAMP = ", row[3], "\n")
+
+    print("________________________________")
+    dataset = database.read_dataset("1")
+
+    for row in dataset:
         print("ID = ", row[0])
         print("NAME = ", row[1])
         print("DATASET_ID = ", row[2])
