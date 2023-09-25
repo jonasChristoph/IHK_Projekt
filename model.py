@@ -100,18 +100,19 @@ class Database:
             self.connection_pool.release_connection(conn)
         return data
 
-    def update_results(self, name, group_id):
+    def update_results(self, name, dataset_id):
         conn = self.connection_pool.get_connection()
         try:
-            conn.execute(f'INSERT INTO ResultDatasets (name, group_id) VALUES ({name}, {group_id})')
+            conn.execute(f'INSERT INTO ResultDatasets (name, dataset_id) VALUES ({name}, {dataset_id})')
             conn.commit()
         finally:
             self.connection_pool.release_connection(conn)
 
-    def update_images(self, name, group_id):
+    def update_images(self, name, dataset_id):
         conn = self.connection_pool.get_connection()
         try:
-            conn.execute(f'INSERT INTO Images (name, group_id) VALUES ({name}, {group_id})')
+            # Use parameter binding to safely insert values into the query
+            conn.execute("INSERT INTO Images (name, dataset_id) VALUES (?, ?)", (name, dataset_id))
             conn.commit()
         finally:
             self.connection_pool.release_connection(conn)

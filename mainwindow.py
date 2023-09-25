@@ -32,13 +32,9 @@ class MainWindow(QMainWindow):
         self.ui.label_right_image.setPixmap(scale(pic, 640))
         self.ui.label_logo.setPixmap(scale(logo, 145))
 
-    def button_clicked(self):
-        print("clicked")
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     widget = MainWindow()
-
     widget.show()
     sys.exit(app.exec())

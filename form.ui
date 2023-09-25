@@ -233,6 +233,8 @@ QPushButton:pressed {
      <string>Data</string>
     </property>
     <addaction name="actionImport"/>
+    <addaction name="actionImport_Folder"/>
+    <addaction name="separator"/>
     <addaction name="actionExport"/>
    </widget>
    <widget class="QMenu" name="menuModel">
@@ -286,6 +288,11 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Heatmaps</string>
+   </property>
+  </action>
+  <action name="actionImport_Folder">
+   <property name="text">
+    <string>Import Folder</string>
    </property>
   </action>
  </widget>
